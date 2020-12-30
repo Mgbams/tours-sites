@@ -71,11 +71,14 @@ body {
   font-size: 0.875rem;
 }
 
-#tour-section {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+h3 {
+  font-size: 2rem;
+  color: var(--clr-grey-6);
+}
+
+.App {
+  display: flex;
+  justify-content: center;
 }
 
 .readmore-button {
@@ -83,4 +86,9 @@ body {
   outline: none;
   background: none;
   color: blue;
+}
+
+.card-img-top {
+  height: 35vw;
+  object-fit: cover;
 }

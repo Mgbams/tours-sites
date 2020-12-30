@@ -1,11 +1,11 @@
 import React from "react";
-import Tours from "./components/";
+import ToursList from "./components";
 
 const App = () => {
   return (
-    <>
-      <Tours />
-    </>
+    <div className="App">
+      <ToursList />
+    </div>
   );
 };
 
