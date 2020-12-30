@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 const Tour = ({ id, name, image, info, price }) => {
-  const texts =
-    "Hello word and i am happy writing this ugly text that wont allow me succeed and it is difficult as hell to come up with the logic to continue doing it. Hello word and i am happy writing this ugly text that wont allow me succeed and it is difficult as hell to come up with the logic to continue doing it. Hello word and i am happy writing this ugly text that wont allow me succeed and it is difficult as hell to come up with the logic to continue doing it.Hello word and i am happy writing this ugly text that wont allow me succeed and it is difficult as hell to come up with the logic to continue doing it.";
+  const [readMore, setReadMore] = useState(true);
+
+  const handleReadMore = () => {
+    console.log("hello");
+    if (readMore) {
+      setReadMore(false);
+    } else {
+      setReadMore(true);
+    }
+  };
 
   return (
     <div className="tour-section mb-5">
@@ -19,12 +27,9 @@ const Tour = ({ id, name, image, info, price }) => {
             <p>&euro; {price ? price : 1300}</p>
           </div>
           <p className="card-text description my-3">
-            {info ? info.substring(0, 200) : "default description"}...
-            <button
-              className="readmore-button"
-              onClick={() => console.log("hello")}
-            >
-              Read More
+            {readMore ? info.substring(0, 200) + "..." : info}
+            <button className="readmore-button" onClick={handleReadMore}>
+              {readMore ? "Read More" : "Show Less"}
             </button>
           </p>
           <div className="mt-4 d-flex justify-content-center align-items-center">
