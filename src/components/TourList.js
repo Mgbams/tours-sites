@@ -4,12 +4,18 @@ const url = "https://course-api.com/react-tours-project";
 
 const TourList = () => {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
     const response = await fetch(url);
     const tourSites = await response.json();
-    console.log(tourSites);
     setData(tourSites);
+    setIsLoading(false);
+  };
+
+  const removeHandler = (id) => {
+    const interested = data.filter((response) => response.id !== id);
+    setData(interested);
   };
 
   useEffect(() => {
@@ -17,9 +23,19 @@ const TourList = () => {
   }, [url]);
   return (
     <div style={{ marginTop: "50px" }}>
-      <h1 className="text-center mb-3">Our Tours</h1>
+      {isLoading && (
+        <div className="text-center" style={{ fontSize: "2.5rem" }}>
+          Loading ...
+        </div>
+      )}
+      {!isLoading && (
+        <h1 className="text-center mb-3 main-title">
+          <strong>Our Tours</strong>
+          <div className="hr"></div>
+        </h1>
+      )}
       {data.map((tour) => (
-        <Tour key={tour.id} {...tour} />
+        <Tour key={tour.id} {...tour} removeHandler={removeHandler} />
       ))}
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-const Tour = ({ id, name, image, info, price }) => {
+const Tour = ({ id, name, image, info, price, removeHandler }) => {
   const [readMore, setReadMore] = useState(true);
 
   const handleReadMore = () => {
@@ -36,6 +36,7 @@ const Tour = ({ id, name, image, info, price }) => {
             <button
               type="button"
               className="btn btn-outline-danger"
+              onClick={() => removeHandler(id)}
               style={{ width: "15rem" }}
             >
               Not Interested

@@ -92,3 +92,16 @@ h3 {
   height: 35vw;
   object-fit: cover;
 }
+
+.hr {
+  background-color: blue !important;
+  width: 90px;
+  height: 5px;
+  margin-top: 5px;
+}
+.main-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
