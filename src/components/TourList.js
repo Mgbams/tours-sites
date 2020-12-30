@@ -1,26 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Tour from "./Tour";
+import { useFetch } from "../hooks/useFetch";
 const url = "https://course-api.com/react-tours-project";
 
 const TourList = () => {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { data, isLoading, removeHandler } = useFetch(url);
 
-  const fetchData = async () => {
-    const response = await fetch(url);
-    const tourSites = await response.json();
-    setData(tourSites);
-    setIsLoading(false);
-  };
-
-  const removeHandler = (id) => {
-    const interested = data.filter((response) => response.id !== id);
-    setData(interested);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [url]);
   return (
     <div style={{ marginTop: "50px" }}>
       {isLoading && (
